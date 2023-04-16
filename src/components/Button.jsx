@@ -1,9 +1,9 @@
 import React from "react"
 
-const Button = () => {
+const Button = ({name, pageLink}) => {
     return (
-        <a href="">
-            <button></button>
+        <a href={pageLink}>
+            <button>{name}</button>
         </a>
     )
 }
