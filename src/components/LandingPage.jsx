@@ -1,9 +1,18 @@
-import React from "react";
+import {React, useState} from "react";
 import { listItems } from "../constants/constants";
-import { taskLogo, task1, task2 } from "../assets/assets";
+import { taskLogo, programmingVideo, task2 } from "../assets/assets";
 import { Button } from "./components";
 
 const LandingPage = () => {
+    const [showVideo, setShowVideo] = useState(false);
+
+    const handleShowVideo = () => {
+        setShowVideo(prevShowVideo => !prevShowVideo);
+        if (showVideo == false) {
+            const video = document.getElementById()
+        }
+    }
+
     return (
         <section className="w-full h-auto">
             <div className="page w-full h-auto">
@@ -37,7 +46,7 @@ const LandingPage = () => {
                                 <h1 className="text-black text-[50px] mb-4 font-bold">An online task management tool for teams</h1>
                                 <p className=" mb-4 text-black text-[20px]">Quick tasks completion wherever you are & manage your teams with simple boards</p>
                                 <div className=" w-full h-auto flex justify-start items-center space-x-4 ">
-                                    <button className="buttonGradient2 ">Log In and start your tasks</button>
+                                    <button className="buttonGradient2">Log In and start your tasks</button>
                                     <button className="btncss font-bold"><i className="fa-brands fa-github"></i>  Github</button>
                                 </div>
                             </div>
@@ -45,9 +54,15 @@ const LandingPage = () => {
                         </div>
                         <div className="w-full flex justify-start">
                             <div className="w-auto h-auto flex items-center space-x-3">
-                                <button className="w-9 h-9 rounded-[50%] outline-none text-white bg-violetBlue"><i className="fa-solid fa-play"></i></button>
+                                <button className="w-9 h-9 rounded-[50%] outline-none text-white bg-violetBlue" onClick={handleShowVideo}><i className="fa-solid fa-play"></i></button>
                                 <span className="font-bold">see how it works</span>
                             </div>
+                        </div>
+                    </section>
+                    <section className={`fixed top-0 left-0 w-full h-[100vh] ${ showVideo ? "flex" : "hidden" } flex-col justify-center items-center`}>
+                        <button className="buttonGradient1 mb-7" onClick={handleShowVideo}>CANCEL</button>
+                        <div className="w-[720px] h-auto p-2 rounded-xl bg-white border border-violetBlue boxShadow">
+                            <video src={programmingVideo} controls></video>
                         </div>
                     </section>
                     {/* <section>

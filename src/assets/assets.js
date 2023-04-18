@@ -14,6 +14,7 @@ import avatar12 from './avatars/avatar12.jpg'
 import avatar13 from './avatars/avatar13.jpg'
 import avatar14 from './avatars/avatar14.jpg'
 import avatar15 from './avatars/avatar15.jpg'
+import programmingVideo from './programmingVideo.mp4'
 
 export {
     task1,
@@ -31,5 +32,6 @@ export {
     avatar12,
     avatar13,
     avatar14,
-    avatar15
+    avatar15,
+    programmingVideo
 }
