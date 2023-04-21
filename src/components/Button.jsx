@@ -1,10 +1,11 @@
-import React from "react"
+import React from "react";
+import { Link } from "react-router-dom";
 
-const Button = ({name, pageLink}) => {
+const Button = ({name}) => {
     return (
-        <a href={pageLink}>
+        <Link to="/login">
             <button className="buttonGradient1 px-2 py-5 text-white font-bold uppercase">{name}</button>
-        </a>
+        </Link>
     )
 }
 
