@@ -2,6 +2,7 @@ import {React, useState} from "react";
 import { listItems } from "../constants/constants";
 import { taskLogo, programmingVideo, task2 } from "../assets/assets";
 import { Button } from "./components";
+import { Link } from "react-router-dom";
 
 const LandingPage = () => {
     const [showVideo, setShowVideo] = useState(false);
@@ -46,7 +47,9 @@ const LandingPage = () => {
                                 <h1 className="text-black text-[50px] mb-4 font-bold">An online task management tool for teams</h1>
                                 <p className=" mb-4 text-black text-[20px]">Quick tasks completion wherever you are & manage your teams with simple boards</p>
                                 <div className=" w-full h-auto flex justify-start items-center space-x-4 ">
-                                    <button className="buttonGradient2">Log In and start your tasks</button>
+                                    <Link to="login">
+                                        <button className="buttonGradient2">Log In and start your tasks</button>
+                                    </Link>
                                     <button className="btncss font-bold"><i className="fa-brands fa-github"></i>  Github</button>
                                 </div>
                             </div>

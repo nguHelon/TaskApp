@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { LandingPage, LogIn } from "./components/components";
+import { LandingPage, LogIn, UserSideBar, UserBody } from "./components/components";
 
 function App() {
   return (
@@ -8,6 +8,9 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LogIn />} />
+        <Route path="/mydashboard" element={<UserSideBar />} >
+          <Route index element={<UserBody />} />
+        </Route>
       </Routes>
     </>
   )
