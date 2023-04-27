@@ -4,8 +4,8 @@ import { taskLogo } from "../assets/assets";
 
 const UserSideBar = () => {
     return (
-        <div className="w-full p-3 flex justify-between items-start bg-[#edf1f4]">
-            <div className="w-[350px] h-[97vh] p-3 rounded-2xl bg-white">
+        <div className="w-full p-3 pl-[280px] flex justify-between items-start bg-[#edf1f4]">
+            <div className="w-[250px] h-[97vh] p-3 rounded-2xl bg-white fixed left-3 top-3 containerBoxShadow">
                 <img className="w-[100px] rounded-md mb-11" src={taskLogo} alt="" />
                 <ul className="w-full flex flex-col space-y-7">
                     <li className="flex items-center justify-start space-x-2">

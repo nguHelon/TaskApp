@@ -18,6 +18,8 @@ import taskImage1 from './taskImage1.png'
 import taskImage2 from './taskImage2.png'
 import loginBg from './loginBg.jpg'
 import loginBg2 from './loginBg2.jpg'
+import reward from './reward.png'
+import target from './target.png'
 import programmingVideo from './programmingVideo.mp4'
 
 export {
@@ -41,5 +43,7 @@ export {
     taskImage2,
     loginBg,
     loginBg2,
+    reward,
+    target,
     programmingVideo
 }
