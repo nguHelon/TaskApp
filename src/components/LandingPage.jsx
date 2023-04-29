@@ -1,4 +1,4 @@
-import {React, useState} from "react";
+import { React, useState } from "react";
 import { listItems } from "../constants/constants";
 import { taskLogo, programmingVideo, task2 } from "../assets/assets";
 import { Button } from "./components";
@@ -9,9 +9,6 @@ const LandingPage = () => {
 
     const handleShowVideo = () => {
         setShowVideo(prevShowVideo => !prevShowVideo);
-        if (showVideo == false) {
-            const video = document.getElementById()
-        }
     }
 
     return (

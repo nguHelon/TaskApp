@@ -4,7 +4,9 @@ import LogIn from "./LogIn";
 import UserSideBar from "./UserSideBar";
 import UserBody from "./UserBody";
 import UserMeetings from "./UserMeetings";
-import UserTasks from "./UserTasks"
+import UserTasks from "./UserTasks";
+import AdminSideBar from "./AdminSideBar";
+import AdminDashboard from "./AdminDashboard";
 
 export {
     Button,
@@ -14,4 +16,6 @@ export {
     UserBody,
     UserMeetings,
     UserTasks,
+    AdminSideBar,
+    AdminDashboard,
 }
