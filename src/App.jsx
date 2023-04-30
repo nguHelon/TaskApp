@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { LandingPage, LogIn, UserSideBar, UserBody, UserTasks, UserMeetings, AdminSideBar, AdminDashboard } from "./components/components";
+import { LandingPage, LogIn, UserSideBar, UserBody, UserTasks, UserMeetings, AdminSideBar, AdminDashboard, AdminUsers } from "./components/components";
 
 function App() {
   return (
@@ -15,6 +15,7 @@ function App() {
         </Route>
         <Route path="/admindashboard" element={<AdminSideBar />}>
           <Route index element={<AdminDashboard />} />
+          <Route path="users" element={<AdminUsers />} />
         </Route>
       </Routes>
     </>

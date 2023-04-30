@@ -7,6 +7,7 @@ import UserMeetings from "./UserMeetings";
 import UserTasks from "./UserTasks";
 import AdminSideBar from "./AdminSideBar";
 import AdminDashboard from "./AdminDashboard";
+import AdminUsers from "./AdminUsers";
 
 export {
     Button,
@@ -18,4 +19,5 @@ export {
     UserTasks,
     AdminSideBar,
     AdminDashboard,
+    AdminUsers,
 }
