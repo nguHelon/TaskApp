@@ -16,7 +16,15 @@ const UserSideBar = () => {
                             <span className="text-textColor text-xl">Dashboard</span>
                         </li>
                     </Link>
-                    <Link to="tasks">
+                    <Link to="adminusers">
+                        <li className="flex items-center justify-start space-x-2">
+                            <div className="h-[40px] w-[40px] rounded-full flex justify-center items-center text-[#276221] bg-[#acda87]">                            
+                                <i className="fa-solid fa-users text-xl"></i>
+                            </div>
+                            <span className="text-textColor text-xl">Users</span>
+                        </li>
+                    </Link>
+                    <Link to="admintasks">
                         <li className="flex items-center justify-start space-x-2">
                             <div className="h-[40px] w-[40px] rounded-full flex justify-center items-center text-[#276221] bg-[#acda87]">
                                 <i className="fa-solid fa-list-ul text-xl"></i>
@@ -24,7 +32,7 @@ const UserSideBar = () => {
                             <span className="text-textColor text-xl">Tasks</span>
                         </li>
                     </Link>
-                    <Link to="meetings">
+                    <Link to="adminmeetings">
                         <li className="flex items-center justify-start space-x-2">
                             <div className="h-[40px] w-[40px] rounded-full flex justify-center items-center">
                                 <i className="fa-solid fa-video text-gray-700"></i>
