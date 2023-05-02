@@ -20,6 +20,12 @@ import loginBg from './loginBg.jpg'
 import loginBg2 from './loginBg2.jpg'
 import reward from './reward.png'
 import target from './target.png'
+import login1 from './login1.jpg'
+import login2 from './login2.jpg'
+import login3 from './login3.png'
+import login4 from './login4.jpg'
+import login5 from './login5.jpg'
+import login6 from './login6.png'
 import programmingVideo from './programmingVideo.mp4'
 
 export {
@@ -45,5 +51,11 @@ export {
     loginBg2,
     reward,
     target,
+    login1,
+    login2,
+    login3,
+    login4,
+    login5,
+    login6,
     programmingVideo
 }

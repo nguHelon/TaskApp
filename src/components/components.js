@@ -10,6 +10,9 @@ import AdminDashboard from "./AdminDashboard";
 import AdminUsers from "./AdminUsers";
 import AdminMeetings from "./AdminMeetings";
 import AdminTasks from "./AdminTasks";
+import AddUserForm from "./AddUserForm";
+import AddTaskForm from "./AddTaskForm";
+import AddMeetingForm from "./AddMeetingForm";
 
 export {
     Button,
@@ -24,4 +27,7 @@ export {
     AdminUsers,
     AdminMeetings,
     AdminTasks,
+    AddUserForm,
+    AddTaskForm,
+    AddMeetingForm,
 }
