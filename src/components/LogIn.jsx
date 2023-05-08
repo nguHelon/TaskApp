@@ -1,11 +1,29 @@
-import React from "react"
+import { useContext, useReducer, React, useState} from "react"
 import { taskImage1, loginBg2 } from "../assets/assets";
-// import { Link } from "react-router-dom";
+import { usersContext } from "./context&Reducer/AllContext";
+import { Link } from "react-router-dom";
 
 const LogIn = () => {
+    const allUsers = useContext(usersContext);
+
+    const [loggedUser, setLoggedUser] = useState({});
+    const [userInfo, setUserInfo] = useState({name: '', password: ''});
+    const [link, setLink] = useState("");
+
+    function handleLogin() {
+        setLoggedUser(() => {
+            return allUsers.filter((user) => {
+                if((user.name == userInfo.name) && (user.password == userInfo.password)) {
+                    setLink("/mydashboard");
+                    return user;
+                }
+            })
+        })
+    }
+
     return (
         <section className="w-full h-[100vh] flex justify-center items-center bg-cover bg-center bg-no-repeat" style={{backgroundImage: `url(${loginBg2})`}}>
-            <div className="w-[1000px] flex items-center justify-end rounded-xl relative boxShadow2 bg-white">
+            <div className="w-[1000px] flex items-center justify-end rounded-xl relative boxShadow2 bg-white" onMouseOver={handleLogin}>
                 <img className="w-1/2 h-full rounded-l-xl absolute top-0 left-0" src={taskImage1} alt="" />
                 <div className="w-1/2 h-full p-5">
                     <div className="w-full px-[30px] pt-[15px] flex flex-col justify-center items-center text-center">
@@ -14,12 +32,36 @@ const LogIn = () => {
                         </div>
                         <h1 className="text-[22px] mb-2">Hello! 👋  Welcome!</h1>
                         <p className="text-dimGray mb-7">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, ipsum?</p>
-                        <form className="w-full">
-                            <input className="w-full h-[30px] outline-none border border-dimGray mb-3 pl-3 py-5" type="text" placeholder="email"/>
-                            <input className="w-full h-[30px] outline-none border border-dimGray mb-3 pl-3 py-5" type="password" placeholder="password"/>
-                            <button className="w-full h-auto outline-none border-none bg-pink-600 text-white font-bold p-2 rounded-3xl">Log In</button>
+                        <div className="w-full">
+                            <input 
+                                className="w-full h-[30px] outline-none border border-dimGray mb-3 pl-3 py-5" 
+                                type="text" 
+                                placeholder="name"
+                                onChange={
+                                    (e) => {
+                                        setUserInfo({...userInfo, name: e.target.value});
+                                    }
+                                }                                    
+                            />
+                            <input 
+                                className="w-full h-[30px] outline-none border border-dimGray mb-3 pl-3 py-5" 
+                                type="password"
+                                placeholder="password"
+                                onChange={
+                                    (e) => {
+                                        setUserInfo({...userInfo, password: e.target.value});
+                                    }
+                                }
+                            />
+                            <Link to={link}>
+                                <button 
+                                    className="w-full h-auto outline-none border-none bg-pink-600 text-white font-bold p-2 rounded-3xl"
+                                >
+                                    Log In
+                                </button>
+                            </Link>
                             <p className="text-black mt-8">Made with 💗 by Ngu Helon.</p>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
