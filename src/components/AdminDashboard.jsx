@@ -1,5 +1,6 @@
 import React from 'react'
 import { avatar, avatar1, avatar2, avatar3, reward, target } from '../assets/assets'
+import { Link } from "react-router-dom"
 
 const UserBody = () => {
   return (
@@ -58,7 +59,9 @@ const UserBody = () => {
                         <i className="fa-solid fa-users text-5xl text-textColor2"></i>
                         <span className="font-bold text-textColor2 text-2xl">40</span>
                     </div>
-                    <button className="outline-none border-none w-full py-2 rounded-[60px] text-white font-bold buttonGradient3">Add User <i className="fa-solid fa-plus"></i></button>
+                    <Link to="../adduser">
+                      <button className="outline-none border-none w-full py-2 rounded-[60px] text-white font-bold buttonGradient3">Add User <i className="fa-solid fa-plus"></i></button>
+                    </Link>
                 </div>
 
                 <div className="w-[30%] px-3 flex justify-center items-center flex-col rounded-xl py-4 containerBoxShadow">
@@ -67,7 +70,9 @@ const UserBody = () => {
                         <i className="fa-solid fa-video text-5xl text-textColor2"></i>
                         <span className="font-bold text-textColor2 text-2xl">40</span>
                     </div>
-                    <button className="outline-none border-none w-full py-2 rounded-[60px] text-white font-bold buttonGradient4">Add Meeting <i className="fa-solid fa-plus"></i></button>
+                    <Link to="../addmeeting">
+                      <button className="outline-none border-none w-full py-2 rounded-[60px] text-white font-bold buttonGradient4">Add Meeting <i className="fa-solid fa-plus"></i></button>
+                    </Link>
                 </div>
 
                 <div className="w-[30%] px-3 flex justify-center items-center flex-col rounded-xl py-4 containerBoxShadow">
@@ -76,7 +81,9 @@ const UserBody = () => {
                         <i className="fa-solid fa-list-check text-5xl text-textColor2"></i>
                         <span className="font-bold text-textColor2 text-2xl">40</span>
                     </div>
-                    <button className="outline-none border-none w-full py-2 rounded-[60px] text-white font-bold buttonGradient5">Add Task <i className="fa-solid fa-plus"></i></button>
+                    <Link to="../addtask">
+                      <button className="outline-none border-none w-full py-2 rounded-[60px] text-white font-bold buttonGradient5">Add Task <i className="fa-solid fa-plus"></i></button>
+                    </Link>
                 </div>
 
               </div>

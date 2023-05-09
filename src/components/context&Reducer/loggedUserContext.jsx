@@ -8,11 +8,11 @@ const CurrentUserContext = createContext(null);
 export const CurrentUserProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const navigate = useNavigate();
-    const allUsers = useUserContext();
+    const reducerData = useUserContext();
 
     const getUser = (userInfo) => {
         const { name, password } = userInfo;
-        const filteredUser = allUsers.filter((user) => {
+        const filteredUser = reducerData.allUsers.filter((user) => {
             if ((user.name == name) && (user.password == password)) {
                 return user;
             }

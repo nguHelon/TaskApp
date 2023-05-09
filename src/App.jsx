@@ -1,16 +1,18 @@
-import { useContext, React} from "react";
+import { useReducer, useContext, React} from "react";
 import { Routes, Route } from "react-router-dom";
 import { LandingPage, LogIn, UserSideBar, UserBody, UserTasks, UserMeetings, AdminSideBar, AdminDashboard, AdminUsers, AdminMeetings, AdminTasks, AddUserForm, AddTaskForm, AddMeetingForm } from "./components/components";
 import { CurrentUserProvider } from "./components/context&Reducer/loggedUserContext";
+import stateReducer from "./components/context&Reducer/StateReducer";
 
 // All contexts
 import { usersContext } from "./components/context&Reducer/AllContext";
 import { users } from "./components/AppData";
 
 function App() {
+  const [allUsers, dispatch] = useReducer(stateReducer, users);
 
   return (
-    <usersContext.Provider value={users}>
+    <usersContext.Provider value={{allUsers, dispatch}}>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route 

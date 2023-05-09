@@ -1,13 +1,10 @@
 import { React, useState} from "react"
 import { taskImage1, loginBg2 } from "../assets/assets";
-import { usersContext } from "./context&Reducer/AllContext";
-import { Link, useNavigate } from "react-router-dom";
 import { useCurrentUserContext } from "./context&Reducer/loggedUserContext";
 
 const LogIn = () => {
     const [userInfo, setUserInfo] = useState({name: '', password: ''});
     const auth = useCurrentUserContext();
-    const navigate = useNavigate();
 
     function handleLogin() {
         auth.getUser(userInfo);        
