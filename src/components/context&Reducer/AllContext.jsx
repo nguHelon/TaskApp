@@ -1,7 +1,8 @@
-import { createContext, React } from "react";
-import { users } from "../AppData";
+import { createContext, React, useContext } from "react";
 
 const usersContext = createContext(null);
-const currentUserContext = createContext(null);
+const useUserContext = () => {
+  return useContext(usersContext);
+}
 
-export { usersContext, currentUserContext };
+export { usersContext, useUserContext };

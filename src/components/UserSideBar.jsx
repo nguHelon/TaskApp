@@ -1,8 +1,11 @@
 import React from "react"
 import { Outlet, Link } from "react-router-dom";
 import { taskLogo } from "../assets/assets";
+import { useCurrentUserContext } from "./context&Reducer/loggedUserContext";
 
 const UserSideBar = () => {
+    const auth = useCurrentUserContext();
+    console.log(auth);
     return (
         <div className="w-full p-3 pl-[280px] flex justify-between items-start bg-[#edf1f4]">
             <div className="w-[250px] h-[97vh] p-3 rounded-2xl bg-white fixed left-3 top-3 containerBoxShadow">

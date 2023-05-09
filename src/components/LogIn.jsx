@@ -1,29 +1,21 @@
-import { useContext, useReducer, React, useState} from "react"
+import { React, useState} from "react"
 import { taskImage1, loginBg2 } from "../assets/assets";
 import { usersContext } from "./context&Reducer/AllContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useCurrentUserContext } from "./context&Reducer/loggedUserContext";
 
 const LogIn = () => {
-    const allUsers = useContext(usersContext);
-
-    const [loggedUser, setLoggedUser] = useState({});
     const [userInfo, setUserInfo] = useState({name: '', password: ''});
-    const [link, setLink] = useState("");
+    const auth = useCurrentUserContext();
+    const navigate = useNavigate();
 
     function handleLogin() {
-        setLoggedUser(() => {
-            return allUsers.filter((user) => {
-                if((user.name == userInfo.name) && (user.password == userInfo.password)) {
-                    setLink("/mydashboard");
-                    return user;
-                }
-            })
-        })
+        auth.getUser(userInfo);        
     }
 
     return (
         <section className="w-full h-[100vh] flex justify-center items-center bg-cover bg-center bg-no-repeat" style={{backgroundImage: `url(${loginBg2})`}}>
-            <div className="w-[1000px] flex items-center justify-end rounded-xl relative boxShadow2 bg-white" onMouseOver={handleLogin}>
+            <div className="w-[1000px] flex items-center justify-end rounded-xl relative boxShadow2 bg-white">
                 <img className="w-1/2 h-full rounded-l-xl absolute top-0 left-0" src={taskImage1} alt="" />
                 <div className="w-1/2 h-full p-5">
                     <div className="w-full px-[30px] pt-[15px] flex flex-col justify-center items-center text-center">
@@ -53,13 +45,13 @@ const LogIn = () => {
                                     }
                                 }
                             />
-                            <Link to={link}>
-                                <button 
-                                    className="w-full h-auto outline-none border-none bg-pink-600 text-white font-bold p-2 rounded-3xl"
-                                >
-                                    Log In
-                                </button>
-                            </Link>
+                            <button 
+                                className="w-full h-auto outline-none border-none bg-pink-600 text-white font-bold p-2 rounded-3xl"
+                                onClick={handleLogin}
+                            >
+                                Log In
+                            </button>
+                            
                             <p className="text-black mt-8">Made with 💗 by Ngu Helon.</p>
                         </div>
                     </div>
