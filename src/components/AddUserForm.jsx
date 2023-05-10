@@ -1,7 +1,8 @@
-import React, { useContext, useReducer, useState } from "react"
+import React, { useContext, useState } from "react"
 import { login4, login2, avatar, avatar1, avatar2, avatar3, avatar4, avatar8, avatar9, avatar10, avatar11, avatar12, avatar13, avatar14, avatar15 } from "../assets/assets";
 import { usersContext } from "./context&Reducer/AllContext";
 import Images from "./Images";
+import { useNavigate } from "react-router-dom";
 
 const AddUserForm = () => {
     const [avatars, setAvatars] = useState([
@@ -21,12 +22,16 @@ const AddUserForm = () => {
     ]);
     const [userInfo, setUserInfo] = useState({name: "", password: "", image: ""});
     const reducerData = useContext(usersContext);
+    const navigate = useNavigate();
+
+    console.log(avatar);
     
     function handleAddUser() {
         reducerData.dispatch({
             type: "adduser",
             userInfo: userInfo
-        })
+        });
+        navigate("/admindashboard/adminusers");
     }
 
     return (
