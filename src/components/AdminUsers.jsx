@@ -1,9 +1,8 @@
 import React, { useContext } from 'react';
-import { avatar } from '../assets/assets';
 import { usersContext } from './context&Reducer/AllContext';
 
 const AdminUsers = () => {
-    const reducerData = useContext(usersContext);
+  const reducerData = useContext(usersContext);
 
   return (
     <div className="w-full min-h-[100vh]">

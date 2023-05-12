@@ -23,15 +23,13 @@ const AddUserForm = () => {
     const [userInfo, setUserInfo] = useState({name: "", password: "", image: ""});
     const reducerData = useContext(usersContext);
     const navigate = useNavigate();
-
-    console.log(avatar);
     
     function handleAddUser() {
         reducerData.dispatch({
             type: "adduser",
             userInfo: userInfo
         });
-        navigate("/admindashboard/adminusers");
+        navigate(`/admindashboard/adminusers`);
     }
 
     return (
