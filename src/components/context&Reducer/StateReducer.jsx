@@ -36,11 +36,11 @@ function stateReducer(allUsers, action) {
         });
 
         return filteredUsers;
-    }
+    };
 
     case "setAllUsers" : {
         return action.users;
-    }
+    };
 
     default: {
         console.log("why are you running");

@@ -47,7 +47,9 @@ function App() {
       }
     })
 
-    if(newValue[0] === undefined) {
+    if (allUsers.length > 0) {
+      localStorage.setItem("appData", JSON.stringify({...prevValue, users: [...allUsers]}));
+    } else if(newValue[0] === undefined) {
       localStorage.setItem("appData", JSON.stringify({...prevValue, users: [...prevValue.users]}));
     } else if (newValue != []) {
       localStorage.setItem("appData", JSON.stringify({...prevValue, users: [...prevValue.users, newValue[0]]}));
