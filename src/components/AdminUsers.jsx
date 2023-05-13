@@ -3,6 +3,13 @@ import { usersContext } from './context&Reducer/AllContext';
 
 const AdminUsers = () => {
   const reducerData = useContext(usersContext);
+  
+  function handleRemoveUser(userId) {
+    reducerData.dispatch({
+        type: "removeUser",
+        userId: userId,
+    })
+  }
 
   return (
     <div className="w-full min-h-[100vh]">
@@ -45,7 +52,14 @@ const AdminUsers = () => {
                                     </div>
                                 </div>
                             </div>
-                            <button className="outline-none border-none py-1 px-2 rounded-[60px] bg-[#ee6b6e] text-white font-bold">Remove</button>
+                            <button 
+                                className="outline-none border-none py-1 px-2 rounded-[60px] bg-[#ee6b6e] text-white font-bold"
+                                onClick={() => {
+                                    handleRemoveUser(user.id);
+                                }}
+                            >
+                                Remove
+                            </button>
                         </div>
                     )
                 })

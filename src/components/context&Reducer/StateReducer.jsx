@@ -28,6 +28,16 @@ function stateReducer(allUsers, action) {
         ]
     };
 
+    case "removeUser" : {
+        const filteredUsers = allUsers.filter((user) => {
+            if (user.id != action.userId) {
+                return user;
+            }
+        });
+
+        return filteredUsers;
+    }
+
     case "setAllUsers" : {
         return action.users;
     }
