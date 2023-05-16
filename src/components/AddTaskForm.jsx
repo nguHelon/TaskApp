@@ -1,4 +1,4 @@
-import React from "react"
+import { React, useEffect, useState} from "react"
 import { login5, login6 } from "../assets/assets";
 import { useUserContext } from "./context&Reducer/AllContext";
 import TaskAssignee from "./TaskAssignee";
@@ -6,6 +6,15 @@ import TaskAssignee from "./TaskAssignee";
 
 const AddTaskForm = () => {
     const reducerData = useUserContext();
+    const reducerUsers = reducerData.allUsers.map((user) => {
+        return {...user, selected: false}
+    })
+    const [assingnees, setAssignees] = useState([])
+    const [taskInfo, setTaskInfo] = useState({name: "", description: "", assignee: "", });
+
+    useEffect(() => {
+        setAssignees(reducerUsers);
+    }, [reducerData]);
 
     return (
         <section className="w-full h-[100vh] flex justify-center items-center bg-cover bg-center bg-no-repeat" style={{backgroundImage: `url(${login5})`}}>
@@ -19,15 +28,33 @@ const AddTaskForm = () => {
                         <h1 className="text-[22px] mb-2">Add New Task</h1>
                         <p className="text-dimGray mb-7">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, ipsum?</p>                        
                         <div className="w-full">
-                            <input className="w-full h-[30px] outline-none border border-dimGray mb-3 pl-3 py-5" type="text" placeholder="Task Name"/>
-                            <input className="w-full h-[30px] outline-none border border-dimGray mb-3 pl-3 py-5" type="password" placeholder="Task description"/>
+                            <input 
+                                className="w-full h-[30px] outline-none border border-dimGray mb-3 pl-3 py-5" type="text" placeholder="Task Name"
+                                onChange={(e) => {
+                                    setTaskInfo((prevInfo) => {
+                                        return {...prevInfo, name: e.target.value}
+                                    })
+                                }}
+                            />
+                            <input 
+                                className="w-full h-[30px] outline-none border border-dimGray mb-3 pl-3 py-5" type="text" placeholder="Task description"
+                                onChange={(e) => {
+                                    setTaskInfo((prevInfo) => {
+                                        return {...prevInfo, description: e.target.value}
+                                    })
+                                }}
+                            />
                             <div  className="w-full flex flex-wrap m-5 space-x-1">
                                 {
-                                    reducerData.allUsers.map((user) => {
+                                    assingnees.map((user) => {
                                         return <TaskAssignee 
                                             key={user.id}
+                                            id={user.id}
                                             image={user.image}
                                             name={user.name}
+                                            selected={user.selected}
+                                            setTaskInfo={setTaskInfo}
+                                            setAssignees={setAssignees}
                                         />
                                     })
                                 }
