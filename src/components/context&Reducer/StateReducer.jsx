@@ -55,7 +55,6 @@ function getNewuserId() {
 function tasksReducer(tasks, action) {
     switch(action.type) {
         case "addTask" : {
-            console.log("adding task", tasks)
             const {name, description, assignee} = action.taskInfo;
             const newTask = {
                 id: nanoid(),
@@ -64,17 +63,18 @@ function tasksReducer(tasks, action) {
                 assignee: assignee
             }
 
-            return tasks == undefined ? [newTask] : [...tasks, newTask];
-            // if(tasks != undefined) {
-
-            //     return [
-            //         ...tasks,
-            //         newTask
-            //     ]
-            // } else {
-            //     return [newTask];
-            // }
+            return tasks == undefined ? [newTask] : [...tasks, newTask];            
         };
+
+        case "removeTask" : {
+            const filteredTasks = tasks.filter((task) => {
+                if (task.id != action.taskId) {
+                    return task;
+                }
+            });
+    
+            return filteredTasks;
+        }
 
         case "setAllTasks" : {
             return action.tasks

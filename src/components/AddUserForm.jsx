@@ -29,7 +29,7 @@ const AddUserForm = () => {
             type: "adduser",
             userInfo: userInfo
         });
-        navigate(`/admindashboard/adminusers`);
+        navigate(`../adminusers`);
     }
 
     return (

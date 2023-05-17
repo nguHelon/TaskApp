@@ -14,20 +14,14 @@ const TaskContext = ({children}) => {
     })
   }, []);
 
-  console.log(tasks)
-
   useEffect(() => {
     const prevValue = localStorage.getItem("appData") == null ? {tasks: []} : JSON.parse(localStorage.getItem("appData"));   
 
     if (tasks) {
-        console.log("tasks has a value", prevValue);
-    
-    
         if (tasks.length > 0) {
           localStorage.setItem("appData", JSON.stringify({...prevValue, tasks: [...tasks]}));
         }
     } else {
-        console.log("tasks has no value")
         return;
     }
     

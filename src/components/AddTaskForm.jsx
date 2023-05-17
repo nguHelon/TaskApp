@@ -22,7 +22,7 @@ const AddTaskForm = () => {
             type: "addTask",
             taskInfo: taskInfo
         })
-        // navigate("../admindashboard/admintasks");
+        navigate("../admintasks");
     }
 
     useEffect(() => {

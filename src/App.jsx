@@ -82,24 +82,20 @@ function App() {
           <Route path="meetings" element={<UserMeetings />} />
         </Route>   
 
-        <Route path="/admindashboard" element={<AdminSideBar />} >
+        <Route path="/admindashboard" element={
+          <TaskContext>
+            <AdminSideBar />
+          </TaskContext>
+        } >
           <Route index element={<AdminDashboard />} />
           <Route path="adminusers" element={<AdminUsers />} />
           <Route path="adminmeetings" element={<AdminMeetings />} />
-          <Route path="admintasks" element={
-            <TaskContext>
-              <AdminTasks />
-            </TaskContext>
-          } />
+          <Route path="admintasks" element={<AdminTasks />} />
+          <Route path="adduser" element={<AddUserForm />} />
+          <Route path="addtask" element={<AddTaskForm />} />
+          <Route path="addmeeting" element={<AddMeetingForm />} />
         </Route>
 
-        <Route path="adduser" element={<AddUserForm />} />
-        <Route path="addtask" element={
-          <TaskContext>
-            <AddTaskForm />
-          </TaskContext>
-        } />
-        <Route path="addmeeting" element={<AddMeetingForm />} />
       </Routes>
     </usersContext.Provider>
   )
