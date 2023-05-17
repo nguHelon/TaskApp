@@ -2,6 +2,8 @@ import { React, useEffect, useState} from "react"
 import { login5, login6 } from "../assets/assets";
 import { useUserContext } from "./context&Reducer/AllContext";
 import TaskAssignee from "./TaskAssignee";
+import { useContextTask } from "./context&Reducer/TaskContext";
+import { useNavigate } from "react-router-dom";
 // import { Link } from "react-router-dom";
 
 const AddTaskForm = () => {
@@ -10,7 +12,18 @@ const AddTaskForm = () => {
         return {...user, selected: false}
     })
     const [assingnees, setAssignees] = useState([])
-    const [taskInfo, setTaskInfo] = useState({name: "", description: "", assignee: "", });
+    const [taskInfo, setTaskInfo] = useState({name: "", description: "", assignee: ""});
+
+    const tasksReducerData = useContextTask();
+    const navigate = useNavigate();
+
+    function handleAddTask() {
+        tasksReducerData.dispatch({
+            type: "addTask",
+            taskInfo: taskInfo
+        })
+        // navigate("../admindashboard/admintasks");
+    }
 
     useEffect(() => {
         setAssignees(reducerUsers);
@@ -59,7 +72,12 @@ const AddTaskForm = () => {
                                     })
                                 }
                             </div>
-                            <button className="w-full h-auto outline-none border-none bg-[#d24a01] text-white font-bold p-2 rounded-3xl">Add Task</button>
+                            <button 
+                                className="w-full h-auto outline-none border-none bg-[#d24a01] text-white font-bold p-2 rounded-3xl"
+                                onClick={handleAddTask}
+                            >
+                                Add Task
+                            </button>
                             <p className="text-black mt-8">Made with 💗 by Ngu Helon.</p>
                         </div>
                     </div>

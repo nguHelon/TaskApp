@@ -4,13 +4,13 @@ const TaskAssignee = ({id, image, name, selected, setTaskInfo, setAssignees}) =>
   
   function handleSelection() {
     setAssignees((prevUsers) => {
-        return prevUsers.map((user) => {
-            return user.id == id ? {...user, selected: true} : {...user, selected: false};
+        setTaskInfo((prevInfo) => {
+          return {...prevInfo, assignee: id}
         })
-    })
-    setTaskInfo((prevInfo) => {
-        return {...prevInfo, assingee: id}
-    })
+        return prevUsers.map((user) => {
+          return user.id == id ? {...user, selected: true} : {...user, selected: false};
+        })
+    })    
   }
 
   return (

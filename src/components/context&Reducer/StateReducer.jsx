@@ -52,5 +52,35 @@ function getNewuserId() {
     return userId;
 }
 
+function tasksReducer(tasks, action) {
+    switch(action.type) {
+        case "addTask" : {
+            console.log("adding task", tasks)
+            const {name, description, assignee} = action.taskInfo;
+            const newTask = {
+                id: nanoid(),
+                name: name,
+                description: description,
+                assignee: assignee
+            }
+
+            return tasks == undefined ? [newTask] : [...tasks, newTask];
+            // if(tasks != undefined) {
+
+            //     return [
+            //         ...tasks,
+            //         newTask
+            //     ]
+            // } else {
+            //     return [newTask];
+            // }
+        };
+
+        case "setAllTasks" : {
+            return action.tasks
+        };
+    }
+}
+
 export default stateReducer;
-export { getNewuserId };
+export { getNewuserId, tasksReducer };

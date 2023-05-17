@@ -7,7 +7,7 @@ import { getNewuserId } from "./components/context&Reducer/StateReducer";
 
 // All contexts
 import { usersContext } from "./components/context&Reducer/AllContext";
-// import { useGetFromLocalStorage } from "./components/localstorage";
+import TaskContext from "./components/context&Reducer/TaskContext";
 
 function App() {
   const [allUsers, dispatch] = useReducer(stateReducer, []);
@@ -35,8 +35,6 @@ function App() {
       users: appData.users
     })
   }, []);
-
-  console.log(allUsers)
 
   useEffect(() => {
     const prevValue = localStorage.getItem("appData") == null ? {users: defaultValue} : JSON.parse(localStorage.getItem("appData"));
@@ -88,11 +86,19 @@ function App() {
           <Route index element={<AdminDashboard />} />
           <Route path="adminusers" element={<AdminUsers />} />
           <Route path="adminmeetings" element={<AdminMeetings />} />
-          <Route path="admintasks" element={<AdminTasks />} />
+          <Route path="admintasks" element={
+            <TaskContext>
+              <AdminTasks />
+            </TaskContext>
+          } />
         </Route>
 
         <Route path="adduser" element={<AddUserForm />} />
-        <Route path="addtask" element={<AddTaskForm />} />
+        <Route path="addtask" element={
+          <TaskContext>
+            <AddTaskForm />
+          </TaskContext>
+        } />
         <Route path="addmeeting" element={<AddMeetingForm />} />
       </Routes>
     </usersContext.Provider>
