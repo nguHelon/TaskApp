@@ -82,5 +82,26 @@ function tasksReducer(tasks, action) {
     }
 }
 
+function meetingsReducer(meetings, action) {
+    switch(action.type) {
+        case "addMeeting" : {
+            const {name, description, attendants} = action.meetingInfo;
+            return [
+                ...meetings,
+                {
+                    id: nanoid(),
+                    name: name,
+                    description: description,
+                    attendants: attendants
+                }
+            ]
+        }
+
+        case "setAllMeetings" : {
+            return action.meetings;
+        }
+    }
+}
+
 export default stateReducer;
-export { getNewuserId, tasksReducer };
+export { getNewuserId, tasksReducer, meetingsReducer };

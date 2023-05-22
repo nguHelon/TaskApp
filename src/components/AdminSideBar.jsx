@@ -1,8 +1,32 @@
 import React from "react"
 import { Outlet, Link } from "react-router-dom";
 import { taskLogo } from "../assets/assets";
+import { meetingsReducer } from './StateReducer';
 
 const UserSideBar = () => {
+    const [meetings, dispatch] = useReducer(meetingsReducer, []);
+
+    useEffect(() => {
+      const appData = localStorage.getItem("appData") == null ? {meetings: []} : JSON.parse(localStorage.getItem("appData"));
+      dispatch({
+          type: "setAllMeetings",
+          meetings: appData.meetings
+      })
+    }, []);
+  
+    useEffect(() => {
+      const prevValue = localStorage.getItem("appData") == null ? {meetings: []} : JSON.parse(localStorage.getItem("appData"));   
+  
+      if (meetings) {
+          if (meetings.length > 0) {
+            localStorage.setItem("appData", JSON.stringify({...prevValue, meetings: [...meetings]}));
+          }
+      } else {
+          return;
+      }
+      
+    }, [meetings]);
+
     return (
         <div className="w-full p-3 pl-[280px] flex justify-between items-start bg-[#edf1f4]">
             <div className="w-[250px] h-[97vh] p-3 rounded-2xl bg-white fixed left-3 top-3 containerBoxShadow">
@@ -42,7 +66,9 @@ const UserSideBar = () => {
                     </Link>
                 </ul>
             </div>
-            <Outlet />
+
+                <Outlet context={[meetings, dispatch]}/>
+
         </div>
     )
 }

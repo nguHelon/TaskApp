@@ -83,9 +83,9 @@ function App() {
         </Route>   
 
         <Route path="/admindashboard" element={
-          <TaskContext>
-            <AdminSideBar />
-          </TaskContext>
+            <TaskContext>
+              <AdminSideBar />
+            </TaskContext>
         } >
           <Route index element={<AdminDashboard />} />
           <Route path="adminusers" element={<AdminUsers />} />

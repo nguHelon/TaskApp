@@ -1,17 +1,29 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-const MeetingAttendants = ({id, name, image, selected, setMeetingInfo, setAttendants}) => {
+const MeetingAttendants = ({id, name, image, selected, attendants, setMeetingInfo, setAttendants}) => {
+
+    useEffect(() => {
+        setMeetingInfo((prevInfo) => {        
+            if (selected === true && !prevInfo.attendants.includes(id)) {
+                return {...prevInfo, attendants: [...prevInfo.attendants, id]};
+            } else {                
+                return prevInfo;
+            }            
+        })
+    }, [attendants]);
 
   function handleSelection() {
     setAttendants((prevAttendants) => {
         return prevAttendants.map((attendant) => {
-            return attendant.id === id ? {...attendant, selected: !attendant.selected} : attendant;
+            if (attendant.id === id) {                
+                return {...attendant, selected: !attendant.selected}
+            } else{
+                return attendant;
+            }
         })
     })
-    setMeetingInfo((prevInfo) => {
-        console.log("adding attendant")
-        return selected ? {...prevInfo, attendants: [...prevInfo.attendants, id]} : prevInfo;
-    })
+    
+    
   }
 
   return (
