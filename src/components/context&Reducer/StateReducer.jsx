@@ -76,7 +76,7 @@ function tasksReducer(tasks, action) {
             return filteredTasks;
         }
 
-        case "setAllTasks" : {
+        case "setAllTasks" : {            
             return action.tasks
         };
     }
@@ -97,8 +97,18 @@ function meetingsReducer(meetings, action) {
             ]
         }
 
+        case "removeMeeting" : {
+            const filteredMeetings = meetings.filter((meeting) => {
+                if (meeting.id != action.meetingId) {
+                    return meeting;
+                }
+            });
+    
+            return filteredMeetings;
+        }
+
         case "setAllMeetings" : {
-            return action.meetings;
+            return action.meetings === undefined ? [] : action.meetings;
         }
     }
 }

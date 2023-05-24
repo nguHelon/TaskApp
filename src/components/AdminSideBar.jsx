@@ -1,7 +1,7 @@
-import React from "react"
+import {React, useEffect, useReducer} from "react"
 import { Outlet, Link } from "react-router-dom";
 import { taskLogo } from "../assets/assets";
-import { meetingsReducer } from './StateReducer';
+import { meetingsReducer } from "./context&Reducer/StateReducer";
 
 const UserSideBar = () => {
     const [meetings, dispatch] = useReducer(meetingsReducer, []);

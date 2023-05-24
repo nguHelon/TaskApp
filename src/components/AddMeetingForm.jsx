@@ -2,7 +2,7 @@ import { React, useState, useEffect } from "react"
 import { login1, login3 } from "../assets/assets";
 import { useUserContext } from "./context&Reducer/AllContext";
 import MeetingAttendants from "./MeetingAttendants";
-import { useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 // import { useContextMeeting } from "./context&Reducer/MeetingContext";
 
 // import { Link } from "react-router-dom";
@@ -14,8 +14,9 @@ const AddMeetingForm = () => {
     })
     const [attendants, setAttendants] = useState([]);
     const [meetingInfo, setMeetingInfo] = useState({name: "", description: "", date: "", attendants: []});
+    const navigate = useNavigate();
 
-    
+
 
     useEffect(() => {
         setAttendants(reducerUsers);
@@ -30,9 +31,10 @@ const AddMeetingForm = () => {
             type: "addMeeting",
             meetingInfo: meetingInfo
         });
+        navigate("../adminmeetings");
     }
 
-    console.log(meetings, dispatch);    
+    // console.log(meetings, dispatch); 
 
     return (
         <section className="w-full h-[100vh] flex justify-center items-center bg-cover bg-center bg-no-repeat" style={{backgroundImage: `url(${login1})`}}>
