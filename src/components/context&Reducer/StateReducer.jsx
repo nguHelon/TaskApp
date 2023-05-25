@@ -4,7 +4,7 @@ let userId = "";
 function stateReducer(allUsers, action) {
    switch (action.type) {
     case "adduser" : {
-        const { name, password, image } = action.userInfo;
+        const { id, name, password, image } = action.userInfo;
         const imageNameArray = image.split("/");
         const newUser = {
             id: nanoid(),
@@ -17,6 +17,7 @@ function stateReducer(allUsers, action) {
                 onHold: 0,
                 totalTasks: 0
             },
+            allTasks: [],
             meetings: [],
         }
 
@@ -38,6 +39,18 @@ function stateReducer(allUsers, action) {
         return filteredUsers;
     };
 
+    case "tasksOperations" : {
+        return allUsers.map((user) => {
+            if (user.id === action.assignee) {
+                user.tasks.totalTasks += 1;
+                user.allTasks = [...user.allTasks, action.taskId];
+                return user;
+            } else {
+                return user;
+            }
+        })
+    }
+
     case "setAllUsers" : {
         return action.users;
     };
@@ -55,13 +68,19 @@ function getNewuserId() {
 function tasksReducer(tasks, action) {
     switch(action.type) {
         case "addTask" : {
-            const {name, description, assignee} = action.taskInfo;
+            const {id, name, description, assignee} = action.taskInfo;
             const newTask = {
-                id: nanoid(),
+                id: id,
                 name: name,
                 description: description,
                 assignee: assignee
             }
+
+            // action.usersDispatch({
+            //     type: "tasksOperations",
+            //     taskId: newTask.id,
+            //     assignee: newTask.assignee
+            // })
 
             return tasks == undefined ? [newTask] : [...tasks, newTask];            
         };

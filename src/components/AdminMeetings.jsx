@@ -40,7 +40,7 @@ const AdminMeetings = () => {
                       {
                         
                         meeting.attendants.map((attendant) => {
-                            return reducerData.allUsers.map((user)=> {
+                            return reducerData.allUsers.map((user) => {
                               if (attendant == user.id) {
                                 return (
                                   <img key={user.id} className="h-[50px] w-[50px] rounded-full" src={`../src/assets/avatars/${user.image}`} alt="" />
@@ -52,9 +52,9 @@ const AdminMeetings = () => {
                     </div>
                     <button 
                       className="py-1 px-3 mt-5 text-md font-bold text-white rounded-md bg-textColor2"
-                      onClick={
+                      onClick={() => {
                         handleRemoveMeeting(meeting.id)
-                      }
+                      }}
                     >
                       cancel meeting
                     </button>

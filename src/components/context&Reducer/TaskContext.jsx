@@ -27,6 +27,8 @@ const TaskContext = ({children}) => {
     
   }, [tasks]);
 
+  console.log(tasks);
+
   return (
     <taskContext.Provider value={{tasks, dispatch}}>
         {children}

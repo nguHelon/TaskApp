@@ -1,8 +1,14 @@
 import React from 'react'
 import { avatar } from '../assets/assets'
-import { Link } from "react-router-dom"
+import { Link, useOutletContext } from "react-router-dom"
+import { useUserContext } from './context&Reducer/AllContext'
+import { useContextTask } from './context&Reducer/TaskContext'
 
 const UserBody = () => {
+  const reducerData = useUserContext();
+  const [meetings] = useOutletContext();
+  const tasksReducerData = useContextTask();
+
   return (
     <div className="w-full h-auto">
       <div className="w-full h-auto flex items-center justify-between mb-3">
@@ -57,7 +63,7 @@ const UserBody = () => {
                     <h1 className="text-xl text-textColor2 font-bold mb-5">ToTal Users</h1>
                     <div className="h-[150px] w-[150px] flex flex-col justify-center items-center rounded-full border-8 m-5">
                         <i className="fa-solid fa-users text-5xl text-textColor2"></i>
-                        <span className="font-bold text-textColor2 text-2xl">40</span>
+                        <span className="font-bold text-textColor2 text-2xl">{reducerData.allUsers.length}</span>
                     </div>
                     <Link to="adduser">
                       <button className="outline-none border-none w-full py-2 rounded-[60px] text-white font-bold buttonGradient3">Add User <i className="fa-solid fa-plus"></i></button>
@@ -68,7 +74,7 @@ const UserBody = () => {
                     <h1 className="text-xl text-textColor2 font-bold mb-5">ToTal Meetings</h1>
                     <div className="h-[150px] w-[150px] flex flex-col justify-center items-center rounded-full border-8 m-5">
                         <i className="fa-solid fa-video text-5xl text-textColor2"></i>
-                        <span className="font-bold text-textColor2 text-2xl">40</span>
+                        <span className="font-bold text-textColor2 text-2xl">{meetings.length}</span>
                     </div>
                     <Link to="addmeeting">
                       <button className="outline-none border-none w-full py-2 rounded-[60px] text-white font-bold buttonGradient4">Add Meeting <i className="fa-solid fa-plus"></i></button>
@@ -79,7 +85,7 @@ const UserBody = () => {
                     <h1 className="text-xl text-textColor2 font-bold mb-5">ToTal Tasks</h1>
                     <div className="h-[150px] w-[150px] flex flex-col justify-center items-center rounded-full border-8 m-5">
                         <i className="fa-solid fa-list-check text-5xl text-textColor2"></i>
-                        <span className="font-bold text-textColor2 text-2xl">40</span>
+                        <span className="font-bold text-textColor2 text-2xl">{tasksReducerData.tasks.length}</span>
                     </div>
                     <Link to="addtask">
                       <button className="outline-none border-none w-full py-2 rounded-[60px] text-white font-bold buttonGradient5">Add Task <i className="fa-solid fa-plus"></i></button>

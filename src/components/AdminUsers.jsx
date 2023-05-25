@@ -1,9 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { usersContext } from './context&Reducer/AllContext';
 
 const AdminUsers = () => {
   const reducerData = useContext(usersContext);
-  
+  const [allUsers, setAllUsers] = useState([]);
+
+  useEffect(() => {
+    setAllUsers(reducerData.allUsers)
+  }, [reducerData.allUsers]);
+
   function handleRemoveUser(userId) {
     reducerData.dispatch({
         type: "removeUser",
@@ -11,11 +16,23 @@ const AdminUsers = () => {
     })
   }
 
+  function handleSearchUser(name) {
+    setAllUsers((prevUsers) => {
+        return prevUsers.filter((user) => user.name.includes(name))
+    })
+  }
+
   return (
     <div className="w-full min-h-[100vh]">
 
         <div className="w-full flex items-start justify-center mb-10">
-            <input className="w-10/12 h-10 rounded-[60px] pl-3 outline-none font-[600] text-textColor2 containerBoxShadow" type="text" placeholder="Search Tasks"/>
+            <input 
+                className="w-10/12 h-10 rounded-[60px] pl-3 outline-none font-[600] text-textColor2 containerBoxShadow" type="text" placeholder="Search users"
+                onChange={(e) => {
+                    console.log(allUsers)
+                    handleSearchUser(e.target.value);
+                }}
+            />
         </div>
 
         <div className="w-full py-5 text-left mb-4">
@@ -25,7 +42,7 @@ const AdminUsers = () => {
 
         <div className="w-full h-auto space-y-5">
             {
-                reducerData.allUsers.map((user) => {
+                allUsers.map((user) => {
                     return (
                         <div key={user.id} className="w-full h-auto p-3 bg-white rounded-2xl containerBoxShadow">
                             <div className="w-full flex justify-between items-start mb-4">

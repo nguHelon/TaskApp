@@ -4,7 +4,7 @@ import { useUserContext } from "./context&Reducer/AllContext";
 import TaskAssignee from "./TaskAssignee";
 import { useContextTask } from "./context&Reducer/TaskContext";
 import { useNavigate } from "react-router-dom";
-// import { Link } from "react-router-dom";
+import { nanoid } from "nanoid";
 
 const AddTaskForm = () => {
     const reducerData = useUserContext();
@@ -12,7 +12,7 @@ const AddTaskForm = () => {
         return {...user, selected: false}
     })
     const [assingnees, setAssignees] = useState([])
-    const [taskInfo, setTaskInfo] = useState({name: "", description: "", assignee: ""});
+    const [taskInfo, setTaskInfo] = useState({id: "", name: "", description: "", assignee: ""});
 
     const tasksReducerData = useContextTask();
     const navigate = useNavigate();
@@ -20,7 +20,8 @@ const AddTaskForm = () => {
     function handleAddTask() {
         tasksReducerData.dispatch({
             type: "addTask",
-            taskInfo: taskInfo
+            taskInfo: taskInfo,
+            usersDispatch: reducerData.dispatch
         })
         navigate("../admintasks");
     }
@@ -74,7 +75,12 @@ const AddTaskForm = () => {
                             </div>
                             <button 
                                 className="w-full h-auto outline-none border-none bg-[#d24a01] text-white font-bold p-2 rounded-3xl"
-                                onClick={handleAddTask}
+                                onClick={() => {
+                                    setTaskInfo((prevInfo) => {
+                                        return {...prevInfo, id: nanoid()}
+                                    })
+                                    handleAddTask();
+                                }}
                             >
                                 Add Task
                             </button>
